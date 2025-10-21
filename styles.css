@@ -1,0 +1,97 @@
+:root {
+  --bg: #0b0b0c;
+  --panel: #141417;
+  --muted: #9aa0a6;
+  --text: #e8eaed;
+  --primary: #ffd54a;
+  --danger: #ff6b6b;
+  --radius: 16px;
+}
+
+* { box-sizing: border-box; }
+html, body {
+  margin: 0; padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+.container { width: min(960px, 92%); margin: 0 auto; }
+
+header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 0;
+}
+
+h1 { font-size: 22px; margin: 0; }
+
+nav .btn { margin-left: 8px; }
+
+.card {
+  background: var(--panel);
+  padding: 20px;
+  border-radius: var(--radius);
+  box-shadow: 0 8px 24px rgba(0,0,0,.25);
+  margin-top: 18px;
+}
+
+.card.nested {
+  background: #1a1a1f;
+  border: 1px solid #2a2a30;
+}
+
+label { display: block; margin-bottom: 14px; font-weight: 600; }
+input {
+  width: 100%; padding: 12px 14px; margin-top: 6px;
+  border-radius: 12px; border: 1px solid #2a2a30; outline: none;
+  background: #101013; color: var(--text);
+}
+
+.btn {
+  border: none; border-radius: 12px; padding: 10px 14px; cursor: pointer;
+  background: #2a2a30; color: var(--text); font-weight: 600;
+}
+.btn.primary { background: var(--primary); color: #212121; }
+.btn.danger { background: var(--danger); }
+.btn.link { background: transparent; border: 1px solid #2a2a30; }
+
+.hidden { display: none !important; }
+.muted { color: var(--muted); }
+
+.toast {
+  position: fixed; bottom: 20px; right: 20px;
+  background: #1e1e22; border: 1px solid #2a2a30;
+  border-radius: 12px; padding: 12px 14px;
+}
+
+ul.bullets { padding-left: 20px; }
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 12px;
+}
+.ticket-card {
+  background: #1a1a1f;
+  border: 1px solid #2a2a30;
+  border-radius: var(--radius);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+}
+.ticket-card h3 { margin: 0; }
+.reserve-form .inline {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+}
+.actions { margin-top: 12px; }
+.mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
+
+@media (max-width: 760px) {
+  .grid-3 { grid-template-columns: 1fr; }
+  .reserve-form .inline { grid-template-columns: 1fr; }
+}

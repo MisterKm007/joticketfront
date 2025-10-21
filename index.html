@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JO Tickets — Frontend</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="container">
+    <h1>JO Tickets</h1>
+    <nav id="nav-auth">
+      <button id="btn-show-login" class="btn link">Se connecter</button>
+      <button id="btn-show-register" class="btn">Créer un compte</button>
+      <button id="btn-logout" class="btn danger hidden">Se déconnecter</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- Auth Views -->
+    <section id="view-login" class="card hidden">
+      <h2>Connexion</h2>
+      <form id="form-login" autocomplete="on">
+        <label>Email
+          <input required type="email" name="email" placeholder="email@exemple.com" />
+        </label>
+        <label>Mot de passe
+          <input required type="password" name="password" placeholder="••••••••" />
+        </label>
+        <button class="btn primary" type="submit">Se connecter</button>
+      </form>
+      <p class="muted">Pas de compte ? <a id="link-to-register" href="#">Créer un compte</a></p>
+    </section>
+
+    <section id="view-register" class="card hidden">
+      <h2>Créer un compte</h2>
+      <form id="form-register" autocomplete="on">
+        <label>Nom d'utilisateur
+          <input required type="text" name="username" placeholder="Votre pseudo" />
+        </label>
+        <label>Email
+          <input required type="email" name="email" placeholder="email@exemple.com" />
+        </label>
+        <label>Mot de passe
+          <input required minlength="6" type="password" name="password" placeholder="Au moins 6 caractères" />
+        </label>
+        <button class="btn primary" type="submit">Créer</button>
+      </form>
+      <p class="muted">Déjà inscrit ? <a id="link-to-login" href="#">Se connecter</a></p>
+    </section>
+
+    <!-- App View (after login) -->
+    <section id="view-app" class="card hidden">
+      <h2>Bienvenue 👋</h2>
+      <p>Authentification réussie. Choisis un type de billet pour continuer.</p>
+
+      <!-- Step 2: Ticket selection -->
+      <div id="ticket-cards" class="grid-3">
+        <div class="ticket-card" data-type="solo">
+          <h3>Solo</h3>
+          <p>1 billet</p>
+          <button class="btn primary btn-choose">Choisir</button>
+        </div>
+        <div class="ticket-card" data-type="duo">
+          <h3>Duo</h3>
+          <p>2 billets</p>
+          <button class="btn primary btn-choose">Choisir</button>
+        </div>
+        <div class="ticket-card" data-type="famille">
+          <h3>Famille</h3>
+          <p>4 billets</p>
+          <button class="btn primary btn-choose">Choisir</button>
+        </div>
+      </div>
+
+      <!-- Reservation form -->
+      <form id="form-reserve" class="reserve-form hidden">
+        <h3>Réservation</h3>
+        <div class="inline">
+          <label>Type
+            <input id="reserve-type" name="type" readonly />
+          </label>
+          <label>Nom du client
+            <input required type="text" name="client_name" placeholder="Votre nom complet" />
+          </label>
+          <label>Email
+            <input required type="email" name="email" placeholder="email@exemple.com" />
+          </label>
+        </div>
+        <button class="btn primary" type="submit">Réserver</button>
+        <button id="btn-cancel-reserve" class="btn link" type="button">Annuler</button>
+      </form>
+
+      <!-- Confirmation -->
+      <section id="view-confirmation" class="card nested hidden">
+        <h3>Réservation confirmée ✅</h3>
+        <p><strong>Type:</strong> <span id="conf-type"></span></p>
+        <p><strong>Code billet:</strong> <span id="conf-code" class="mono"></span></p>
+        <p><strong>Identifiant:</strong> <span id="conf-id" class="mono"></span></p>
+        <p><strong>Créé le:</strong> <span id="conf-created"></span></p>
+        <div class="actions">
+          <button id="btn-new-reservation" class="btn">Nouvelle réservation</button>
+        </div>
+      </section>
+    </section>
+
+    <section id="view-loading" class="card">
+      <p>Chargement…</p>
+    </section>
+
+    <section id="view-toast" class="toast hidden"></section>
+  </main>
+
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>
